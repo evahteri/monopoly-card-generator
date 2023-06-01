@@ -4,4 +4,12 @@ WORKDIR /app
 
 COPY . .
 
+RUN chmod 777 generator.py && \
+    chmod 744 community_chest.csv && \
+    chmod 744 chance.csv && \
+    adduser -D appuser && \
+    chown appuser . 
+
+USER appuser
+
 CMD python3 generator.py
